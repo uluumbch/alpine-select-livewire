@@ -1,0 +1,41 @@
+{
+    "name": "uluumbch/alpine-select-livewire",
+    "description": "Powerful searchable select components with multi-select and drag-ordering support for Laravel Livewire & Alpine.js",
+    "keywords": [
+        "laravel",
+        "livewire",
+        "alpine-js",
+        "select",
+        "multiselect",
+        "blade-components",
+        "tailwindcss"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "uluumbch",
+            "email": "halo@uluumbch.my.id"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11.0|^12.0",
+        "illuminate/view": "^11.0|^12.0",
+        "livewire/livewire": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Uluumbch\\AlpineSelectLivewire\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Uluumbch\\AlpineSelectLivewire\\AlpineSelectLivewireServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
