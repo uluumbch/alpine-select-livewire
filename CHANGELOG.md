@@ -2,7 +2,7 @@
 
 All notable changes to `alpine-select-livewire` will be documented in this file.
 
-## [1.0.0] - 2025-11-29
+## [1.0.0] - 2025-12-01
 
 ### Added
 - Initial release
