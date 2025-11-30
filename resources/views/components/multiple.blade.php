@@ -180,7 +180,7 @@ $watch(() => JSON.stringify(selectedArray || []), (json) => {
     }
 })" wire:ignore class="relative">
     <!-- Trigger -->
-    <div x-ref="trigger"
+    <button x-ref="trigger"
         class="flex justify-between gap-2 border border-zinc-300 dark:border-zinc-700 rounded-lg p-2 bg-white dark:bg-zinc-700 cursor-pointer"
         :class="{
             'ring-2 ring-blue-900 dark:ring-blue-400 border-blue-900 dark:border-blue-400': open,
@@ -243,7 +243,7 @@ $watch(() => JSON.stringify(selectedArray || []), (json) => {
                 </svg>
             </template>
         </div>
-    </div>
+    </button>
 
     <div x-show="floating ? open : true" @click.outside="open = false" x-transition
         class="mt-2 bg-white dark:bg-zinc-900 border border-zinc-200 z-[9999] w-full rounded-lg"

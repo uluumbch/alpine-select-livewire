@@ -138,38 +138,39 @@
     <input type="hidden" x-ref="bridge" {{ $attributes->whereStartsWith('wire:model') }} />
 
     <!-- Trigger -->
-    <div x-ref="trigger"
-        class="border border-zinc-300 dark:border-zinc-700 rounded-lg p-2 bg-white dark:bg-zinc-700 flex items-center justify-between cursor-pointer"
+    <button x-ref="trigger" type="button"
+        class="w-full border border-zinc-300 dark:border-zinc-700 rounded-lg p-2 bg-white dark:bg-zinc-700 flex items-center justify-between gap-2 cursor-pointer"
         :class="{
             'ring-2 ring-blue-900 dark:ring-blue-400 border-blue-900 dark:border-blue-400': open,
             'ring-0': !open,
             '{{ $class }}': true,
         }"
         @click="if(!disabled){ open = !open; if (open) updatePosition() }">
-        <span x-text="displayText()"
+        <div class="flex-1 text-left truncate"
+            x-text="displayText()"
             :class="(!selectedValue || selectedValue === '') ? 'text-zinc-400 dark:text-zinc-500' :
-            'text-zinc-900 dark:text-zinc-100'"></span>
+            'text-zinc-900 dark:text-zinc-100'"></div>
 
-        <div class="flex items-center space-x-2">
+        <div class="flex items-center gap-2 flex-shrink-0">
             <!-- Clear button -->
             <template x-if="clearable && selectedValue">
-                <button type="button" @click.stop="clearSelection"
-                    class="text-zinc-400 dark:text-zinc-500 hover:text-red-500 dark:hover:text-red-400 focus:outline-none">
+                <button type="button" @click.stop="clearSelection" tabindex="0"
+                    class="text-zinc-400 dark:text-zinc-500 hover:text-red-500 dark:hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 rounded">
                     ✕
                 </button>
             </template>
 
             <!-- Dropdown icon -->
             <template x-if="floating">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-zinc-500 dark:text-zinc-400" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-zinc-500 dark:text-zinc-400 flex-shrink-0" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
             </template>
         </div>
-    </div>
+    </button>
 
-    <div x-show="floating ? open : true" @click.outside="open = false" x-transition
+    <div x-show="floating ? open : true" @click.outside="open = false" @keydown.escape.window="open = false" x-transition
         class="mt-2 bg-white dark:bg-zinc-900 border border-zinc-200 z-[9999] w-full rounded-lg"
         :class="{
             'absolute left-0 dark:bg-zinc-900 dark:border-zinc-700 shadow-lg': floating
@@ -185,8 +186,13 @@
         <!-- Options -->
         <div class="max-h-48 overflow-y-auto p-2 space-y-1">
             <template x-for="(option, index) in filteredOptions" :key="option.value ?? index">
-                <div @click="choose(option)"
-                    class="cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800 p-2 rounded-md"
+                <div @click="choose(option)" 
+                    @keydown.enter="choose(option)"
+                    @keydown.space.prevent="choose(option)"
+                    tabindex="0"
+                    role="option"
+                    :aria-selected="selectedValue == option.value"
+                    class="cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                     :class="{
                         'bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-medium': selectedValue ==
                             option.value
