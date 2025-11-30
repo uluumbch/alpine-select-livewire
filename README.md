@@ -4,14 +4,14 @@ Powerful searchable select components with multi-select and drag-ordering suppor
 
 ## Features
 
-✅ **Single & Multi-select variants** - Choose between single selection or multiple selections with chips  
-✅ **Searchable/filterable options** - Built-in search functionality for large option lists  
-✅ **Drag & drop reordering** - Reorder selected items in multi-select mode  
-✅ **Dark mode support** - Full support for dark mode styling  
-✅ **Full Livewire integration** - Seamless wire:model binding with defer support  
-✅ **Zero JavaScript compilation** - Uses Livewire's bundled Alpine.js  
-✅ **TailwindCSS styled** - Fully customizable with TailwindCSS  
-✅ **Flexible options format** - Supports arrays, objects, or mixed formats  
+- **Single & Multi-select variants** - Choose between single selection or multiple selections with chips  
+- **Searchable/filterable options** - Built-in search functionality for large option lists  
+- **Drag & drop reordering** - Reorder selected items in multi-select mode  
+- **Dark mode support** - Full support for dark mode styling  
+- **Full Livewire integration** - Seamless wire:model binding with defer support  
+- **Zero JavaScript compilation** - Uses Livewire's bundled Alpine.js  
+- **TailwindCSS styled** - Fully customizable with TailwindCSS  
+- **Flexible options format** - Supports arrays, objects, or mixed formats  
 
 ## Requirements
 
