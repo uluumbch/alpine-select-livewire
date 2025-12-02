@@ -25,6 +25,9 @@ class AlpineSelectLivewireServiceProvider extends ServiceProvider
         // Load views from package
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'alpine-select');
 
+        // Load translations from package
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'alpine-select');
+
         // Register Blade components
         Blade::component('alpine-select::components.default', 'alpine-select::default');
         Blade::component('alpine-select::components.multiple', 'alpine-select::multiple');
@@ -38,5 +41,10 @@ class AlpineSelectLivewireServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/alpine-select.php' => config_path('alpine-select.php'),
         ], 'alpine-select-config');
+
+        // Publish translations
+        $this->publishes([
+            __DIR__.'/../resources/lang' => lang_path('vendor/alpine-select'),
+        ], 'alpine-select-lang');
     }
 }

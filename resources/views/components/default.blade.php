@@ -1,7 +1,8 @@
 @props([
     'options' => [],
-    'placeholder' => 'Pilih opsi...',
-    'no_results_text' => 'Tidak ada hasil',
+    'placeholder' => null,
+    'no_results_text' => null,
+    'search_placeholder' => null,
     'searchable' => false,
     'clearable' => false,
     'disabled' => false,
@@ -9,6 +10,12 @@
     'class' => '',
     'selected' => null,
 ])
+
+@php
+    $placeholder = $placeholder ?? __('alpine-select::alpine-select.placeholder');
+    $no_results_text = $no_results_text ?? __('alpine-select::alpine-select.no_results');
+    $search_placeholder = $search_placeholder ?? __('alpine-select::alpine-select.search_placeholder');
+@endphp
 
 <div {{ $attributes->except(['wire:model', 'class']) }} x-data="{
     open: false,
@@ -178,7 +185,7 @@
         <!-- Search -->
         <template x-if="searchable">
             <div class="p-2 border-b border-zinc-200 dark:border-zinc-700">
-                <input type="text" x-model="search" placeholder="Cari..."
+                <input type="text" x-model="search" placeholder="{{ $search_placeholder }}"
                     class="w-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 rounded-md px-2 py-1 text-sm text-zinc-900 dark:text-zinc-100 focus:ring-blue-900 dark:focus:ring-blue-400 focus:border-blue-900 dark:focus:border-blue-400" />
             </div>
         </template>
