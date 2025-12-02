@@ -1,7 +1,11 @@
 # Changelog
 
 All notable changes to `alpine-select-livewire` will be documented in this file.
+## [1.1.0] - 2025-12-02
 
+### Added
+- Add translatable text
+  
 ## [1.0.0] - 2025-12-01
 
 ### Added
