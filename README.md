@@ -239,6 +239,85 @@ class MyComponent extends Component
 />
 ```
 
+## Publishing Assets
+
+### Publish Configuration
+
+```bash
+php artisan vendor:publish --tag=alpine-select-config
+```
+
+This publishes `config/alpine-select.php` for custom configuration.
+
+### Publish Views
+
+```bash
+php artisan vendor:publish --tag=alpine-select-views
+```
+
+This publishes views to `resources/views/vendor/alpine-select` for customization.
+
+### Publish Translations
+
+```bash
+php artisan vendor:publish --tag=alpine-select-lang
+```
+
+This publishes language files to `lang/vendor/alpine-select` for translation.
+
+### Publish All
+
+```bash
+php artisan vendor:publish --provider="Uluumbch\AlpineSelectLivewire\AlpineSelectLivewireServiceProvider"
+```
+
+## Translations
+
+The package supports multiple languages. Default texts are in English.
+
+### Available Translation Keys
+
+- `placeholder` - "Select an option..."
+- `no_results` - "No results found"
+- `search_placeholder` - "Search..."
+- `select_all` - "Select All"
+- `clear_all` - "Clear All"
+
+### Creating Custom Translations
+
+1. Publish the language files:
+```bash
+php artisan vendor:publish --tag=alpine-select-lang
+```
+
+2. Create your language file (e.g., `lang/vendor/alpine-select/id/alpine-select.php`):
+
+```php
+<?php
+
+return [
+    'placeholder' => 'Pilih opsi...',
+    'no_results' => 'Tidak ada hasil',
+    'search_placeholder' => 'Cari...',
+    'select_all' => 'Pilih Semua',
+    'clear_all' => 'Hapus Semua',
+];
+```
+
+### Overriding Translations Per Component
+
+You can override translations for individual components:
+
+```blade
+<x-alpine-select::default
+    wire:model="selectedOption"
+    :options="$options"
+    placeholder="Custom placeholder text"
+    no_results_text="Custom no results message"
+    search_placeholder="Custom search placeholder"
+/>
+```
+
 ## Styling Customization
 
 ### Option 1: TailwindCSS Theme Extension
